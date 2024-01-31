@@ -10,10 +10,16 @@ with Diagram("Puptool Overview", show=True, direction="LR"):
 
     airbyte = Custom("Airbyte", "airbyte.png")
 
-    with Cluster("Docker"):
-        docker = Docker("Synology")
-        with Cluster("App"):
-            app = Flask("App")
+    with Cluster("TryFi-Flask-Microservice"):
+        docker = Docker("NAS")
+        with Cluster(""):
+            app = Flask("API")
 
     app << GraphQL("TryFi") 
-    airbyte >> docker >> app >> Dbt("dbt") >> Postgresql("db") >> Metabase("Metabase Dashboard")
+    docker - app >>  airbyte >> Dbt("transformation") >> Postgresql("Data Mart") >> Metabase("Metabase Dashboard")
+
+# Instructions to generate: 
+#
+# source env/bin/activate
+# pip install diagrams 
+# python architecture.py

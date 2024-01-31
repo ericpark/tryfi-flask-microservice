@@ -15,7 +15,7 @@ You can deploy to your localhost running on port 8000 with Docker Compose:
 docker compose up -d
 ```
 
-Updating the package can be done by uninstalling pytryfi:
+Updating the package can be done by uninstalling pytryfi locally before building:
 ```bash
 pip uninstall pytryfi
 ```
@@ -51,6 +51,10 @@ Returns a list of steps from the previous 14 days.
 ## Purpose
 
 ![Overall Architecture](assets/puptool_overview.png)
+
+The TryFi Microservice used in a simple data pipeline. Airbyte calls the microservice and handles the Extraction and Load into a local data warehouse before transforming with dbt for analysis in Metabase. 
+
+Diagram generated using [Diagrams](https://diagrams.mingrammer.com/)
 
 ## Contributing
 
